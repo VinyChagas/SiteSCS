@@ -5,6 +5,10 @@
 
 .u-section-1 .u-sheet-1 {
   min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .u-section-1 .u-text-1 {
@@ -28,7 +32,7 @@
     display: block; /* Define a imagem como um elemento de bloco */
     margin-left: auto;
     margin-right: auto;
-    max-width: auto; /* Impede que a imagem ultrapasse a largura da div */
+    max-width: 100%; /* Impede que a imagem ultrapasse a largura da div */
     height: 250px; /* Mantém a proporção da imagem */
     object-fit: contain; /* ou object-fit: cover */
   }
@@ -43,6 +47,13 @@
   letter-spacing: 4px;
   align-self: center;
   margin: 20px auto 0;
+}
+
+/* Estilo para a logo do cabeçalho em dispositivos móveis */
+@media (max-width: 450px) {
+  .u-logo-image-1 {
+    height: 40px !important; /* Força um tamanho menor para a logo do cabeçalho */
+  }
 }
 
 .u-section-1 {
@@ -142,10 +153,9 @@
   }
 }
 
-@media (max-width: 768px) { /* Ajuste o valor para a largura da tela desejada */
+@media (max-width: 768px) { /* Tablet */
   .centerImage {
-    min-height:300px;
-    
+    height: 200px;
   }
 }
 
@@ -171,6 +181,7 @@
   .u-section-1 .u-text-2 {
     font-size: 1.125rem;
     width: 340px;
+    margin-top: -90px;
   }
 
   .u-section-1 .u-text-3 {
