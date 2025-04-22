@@ -1,0 +1,23 @@
+name: 🚀 Deploy para Hostinger via FTP
+
+on:
+  push:
+    branches:
+      - main  # se a sua branch principal for 'master', troque aqui
+
+jobs:
+  deploy:
+    name: Upload para FTP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clona o repositório
+        uses: actions/checkout@v4
+
+      - name: Faz deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_TARGET_DIR }}
