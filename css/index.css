@@ -2,13 +2,57 @@ html {
   scroll-behavior: smooth;
 }
 
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 50%;
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  z-index: 9999;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999; /* bem alto para garantir que está acima da navbar */
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#loading-video {
+  width: 120px;   /* ou 100px se quiser menor ainda */
+  height: auto;
+  background-color: transparent;
+  object-fit: contain;
+  border-radius: 8px; /* opcional */
+}
+
+body {
+  background-color: #fff; /* ou qualquer cor do fundo principal */
+}
+
 .u-section-1 {
   background-image: url("images/intro.mp4");
   background-position: 50% 50%;
 }
 
 .u-section-1 .u-sheet-1 {
-  min-height: 300px;
+  min-height: 550px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,6 +74,7 @@ html {
   letter-spacing: 2px;
   width: 500px;
   margin: 0px auto 0;
+  padding: 5px;
 }
 
 .centerImage {
@@ -211,9 +256,6 @@ html {
   background-image: none;
 }
 
-.u-section-2 .u-sheet-1 {
-  min-height: 866px;
-}
 
 .u-section-2 .u-text-1 {
   width: 678px;
@@ -225,13 +267,13 @@ html {
   font-size: 3.75rem;
   font-family: Oswald, sans-serif;
   line-height: 66px;
-  margin: 18px auto 0;
+  margin: 0px auto 0;
 }
 
 .u-section-2 .u-text-3 {
   font-style: italic;
   width: 678px;
-  margin: 20px auto 0;
+  margin: 20px auto 20px auto;
 }
 
 .u-section-2 .u-btn-1 {
@@ -536,7 +578,6 @@ html {
 
 .u-section-3 .u-list-1 {
   grid-template-rows: repeat(1, auto);
-  margin-top: 45px;
   margin-bottom: 60px;
 }
 
@@ -1697,7 +1738,6 @@ html {
 }
 
 .centerImage {
-  animation: flutuar 3s ease-in-out infinite;
   display: block;
   margin: 0 auto;
 }
@@ -1740,14 +1780,13 @@ html {
 /* Estilo base */
 .menu-container {
   background-color: white;
-  border-bottom: 2px solid #6e0000;
 }
 
 .menu-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 0px 20px;
   flex-wrap: wrap;
 }
 
