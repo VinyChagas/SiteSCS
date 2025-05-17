@@ -1,0 +1,130 @@
+
+    .services-section {
+      background: #fff;
+      padding: 40px 0 40px 0;
+    }
+    .services-title {
+      color: #6E0000;
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .services-subtitle {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .services-carousel-container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      max-width: 1100px; /* aumentado */
+      margin: 10px auto;
+      position: relative;
+      height: 450px; /* aumentado */
+      overflow: hidden;
+      width: 100%;
+    }
+    .services-cards-carousel {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(.77,0,.18,1);
+      will-change: transform;
+      height: 96%;
+    }
+    .service-card {
+      background: #faf7f2;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(110,0,0,0.08), 0 1.5px 6px rgba(110,0,0,0.10);
+      padding: 72px 32px 32px 32px; /* aumentado */
+      min-width: 520px; /* aumentado */
+      max-width: 520px; /* aumentado */
+      min-height: 400px; /* aumentado */
+      max-height: 400px; /* aumentado */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: box-shadow 0.18s, border-color 0.18s;
+      border: 1.5px solid #f1e3d6;
+      box-sizing: border-box;
+      margin: 0 13px; /* aumentado */
+      flex-shrink: 0;
+    }
+    .service-card h4 {
+      color: #6E0000;
+      font-size: 1.5rem; /* aumentado */
+      margin-bottom: 16px; /* aumentado */
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .service-card p {
+      color: #333;
+      font-size: 1.1rem; /* aumentado */
+      margin-bottom: 0;
+      line-height: 1.7;
+    }
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px; /* aumentado */
+      height: 44px; /* aumentado */
+      box-shadow: 0 2px 8px rgba(110,0,0,0.10);
+      color: #6E0000;
+      font-size: 2rem; /* aumentado */
+      cursor: pointer;
+      z-index: 2;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-arrow:hover {
+      background: #FFCC00;
+      color: #6E0000;
+    }
+    .carousel-arrow.left {
+      left: 1px; /* ajustado */
+    }
+    .carousel-arrow.right {
+      right: 1px; /* ajustado */
+    }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      margin-top: 22px; /* aumentado */
+      gap: 14px; /* aumentado */
+    }
+    .carousel-dot {
+      width: 14px; /* aumentado */
+      height: 14px; /* aumentado */
+      border-radius: 50%;
+      background: #f1e3d6;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .carousel-dot.active {
+      background: #FFCC00;
+    }
+    @media (max-width: 900px) {
+      .services-carousel-container {
+        max-width: 98vw;
+        height: 370px;
+      }
+      .service-card {
+        min-width: 90vw;
+        max-width: 98vw;
+        min-height: 320px;
+        max-height: 340px;
+        padding: 20px 10px 18px 10px;
+        margin: 0 2vw;
+      }
+      .carousel-arrow.left { left: 0; }
+      .carousel-arrow.right { right: 0; }
+    }
