@@ -360,11 +360,11 @@ span.fr-img-caption.fr-view {
       float: right;
       margin: 5px 0 5px 5px;
       max-width: calc(100% - 5px); }
-@charset "UTF-8";
-/*end-commonstyles library*/
+/*end-commonstyles library*/@charset "UTF-8";
 .u-hidden-block {
   visibility: hidden!important;
 }
+
 .u-locked-block {
   pointer-events: none!important;
 }

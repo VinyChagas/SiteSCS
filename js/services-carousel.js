@@ -7,10 +7,9 @@
   let current = 0;
   let intervalId = null;
 
-  function getCardsPerView() {
-    return window.innerWidth >= 900 ? 1 : 1;
-  }
-
+function getCardsPerView() {
+  return window.innerWidth >= 1200 ? 2 : 1;
+}
   function getCardCount() {
     const cardsPerView = getCardsPerView();
     return cards.length - cardsPerView;
@@ -22,30 +21,32 @@
     return card.offsetWidth + parseInt(style.marginLeft) + parseInt(style.marginRight);
   }
 
-  function updateCarousel() {
-    const cardWidth = getCardWidth();
-    const cardCount = getCardCount();
+function updateCarousel() {
+  const cardWidth = getCardWidth();
+  const cardsPerView = getCardsPerView();
+  const cardCount = getCardCount();
 
-    // Corrige índice fora do alcance
-    if (current >= cardCount) current = cardCount - 1;
+  // Corrige índice fora do alcance
+  if (current >= cardCount) current = cardCount - 1;
 
-    carousel.style.transform = `translateX(-${current * cardWidth}px)`;
+  const offset = current * cardWidth * cardsPerView;
+  carousel.style.transform = `translateX(-${offset}px)`;
 
-    // Atualiza os dots
-    dotsContainer.innerHTML = '';
-    for (let i = 0; i < cardCount; i++) {
-      const dot = document.createElement('button');
-      dot.className = 'carousel-dot' + (i === current ? ' active' : '');
-      dot.type = 'button';
-      dot.setAttribute('aria-label', `Ir para o serviço ${i + 1}`);
-      dot.addEventListener('click', () => {
-        current = i;
-        updateCarousel();
-        resetInterval();
-      });
-      dotsContainer.appendChild(dot);
-    }
+  // Atualiza os dots
+  dotsContainer.innerHTML = '';
+  for (let i = 0; i < cardCount; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === current ? ' active' : '');
+    dot.type = 'button';
+    dot.setAttribute('aria-label', `Ir para o serviço ${i + 1}`);
+    dot.addEventListener('click', () => {
+      current = i;
+      updateCarousel();
+      resetInterval();
+    });
+    dotsContainer.appendChild(dot);
   }
+}
 
   function nextCard() {
     const cardCount = getCardCount();

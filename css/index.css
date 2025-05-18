@@ -149,32 +149,6 @@ body {
   padding: 0;
 }
 
-@media (max-width: 1199px) {
-  .u-section-1 {
-    background-position: 50% 100%;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 8.5), rgba(255, 255, 255, 0));
-    /* Gradiente de branco transparente para branco opaco */
-    z-index: 0;
-    /* Posiciona o gradiente entre o vídeo e o texto */
-  }
-
-  .u-section-1 .u-sheet-1 {
-
-    padding-top: 50px;
-    min-height: 250px;
-  }
-
-  .u-section-1 .u-text-1 {
-    margin-top: 140px;
-  }
-
-  .u-section-1 .u-text-3 {
-    width: auto;
-    margin-top: 150px;
-    margin-left: 397px;
-    margin-right: 397px;
-  }
-}
 
 @media (max-width: 991px) {
   .u-section-1 .u-sheet-1 {
@@ -186,14 +160,36 @@ body {
     margin-left: 287px;
     margin-right: 287px;
   }
+    .logo {
+    display: none !important;
+  }
+
+  .menu-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 20px;
+  flex-wrap: wrap;
+  margin: 0px 70px;
+}
 }
 
 @media (max-width: 767px) {
+
   .u-section-1 {
     background-position: 0% 27.06%;
     background-size: auto 115%;
-
   }
+
+    .menu-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 0px 20px;
+  flex-wrap: wrap;
+  margin: 0px 0px;
+}
+
+
 
   .u-section-1 .u-sheet-1 {
     min-height: 403px;
@@ -211,13 +207,9 @@ body {
     margin-left: 197px;
     margin-right: 197px;
   }
-}
 
-@media (max-width: 768px) {
-
-  /* Tablet */
-  .centerImage {
-    height: 200px;
+  .menu-container {
+    margin: 10px;
   }
 }
 
@@ -406,64 +398,11 @@ body {
   padding: 0;
 }
 
-@media (max-width: 1199px) {
-  .u-section-2 .u-sheet-1 {
-    min-height: 799px;
-  }
 
-  .u-section-2 .u-layout-wrap-1 {
-    width: 940px;
-  }
-
-  .u-section-2 .u-layout-cell-1 {
-    min-height: 278px;
-  }
-
-  .u-section-2 .u-text-5 {
-    margin-right: 0;
-  }
-
-  .u-section-2 .u-layout-cell-2 {
-    min-height: 278px;
-  }
-
-  .u-section-2 .u-text-7 {
-    margin-right: 0;
-  }
-
-  .u-section-2 .u-image-1 {
-    min-height: 556px;
-  }
-
-  .u-section-2 .u-layout-cell-4 {
-    min-height: 278px;
-  }
-
-  .u-section-2 .u-text-9 {
-    margin-right: 0;
-  }
-
-  .u-section-2 .u-layout-cell-5 {
-    min-height: 278px;
-  }
-
-  .u-section-2 .u-text-10 {
-    margin-left: 0;
-  }
-
-  .u-section-2 .u-text-11 {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .u-section-2 .u-btn-5 {
-    margin-left: 0;
-  }
-}
 
 @media (max-width: 991px) {
   .u-section-2 .u-sheet-1 {
-    min-height: 976px;
+    min-height: auto;
   }
 
   .u-section-2 .u-text-2 {
@@ -497,9 +436,6 @@ body {
 }
 
 @media (max-width: 767px) {
-  .u-section-2 .u-sheet-1 {
-    min-height: 1267px;
-  }
 
   .u-section-2 .u-text-1 {
     width: auto;
@@ -533,6 +469,10 @@ body {
     padding-left: 10px;
     padding-right: 10px;
   }
+
+  .menu-container {
+    margin: 10px;
+  }
 }
 
 @media (max-width: 575px) {
@@ -551,6 +491,11 @@ body {
 
   .u-section-2 .u-image-1 {
     min-height: 502px;
+  }
+
+  .menu-container {
+    margin-left: 0;
+    margin-right: auto;
   }
 }
 
@@ -660,15 +605,7 @@ body {
   margin: 20px 0 0;
 }
 
-@media (max-width: 1199px) {
-  .u-section-3 .u-sheet-1 {
-    min-height: 568px;
-  }
 
-  .u-section-3 .u-list-1 {
-    height: auto;
-  }
-}
 
 @media (max-width: 991px) {
   .u-section-3 .u-sheet-1 {
@@ -686,6 +623,7 @@ body {
     width: 540px;
     font-size: 3.3rem;
   }
+  
 
   .u-section-3 .u-text-2 {
     width: 540px;
@@ -709,6 +647,10 @@ body {
   .u-section-3 .u-container-layout-4 {
     padding-left: 10px;
     padding-right: 10px;
+  }
+
+  .menu-container {
+    margin: 10px;
   }
 }
 
@@ -907,6 +849,7 @@ body {
   .u-section-4 .u-sheet-1 {
     min-height: 260px;
   }
+  
 
   .u-section-4 .u-layout-wrap-1 {
     width: 540px;
@@ -930,6 +873,10 @@ body {
   .u-section-4 .u-image-1 {
     height: 372px;
     margin-left: initial;
+  }
+
+  .menu-container {
+    margin: 10px;
   }
 }
 
@@ -1172,6 +1119,7 @@ body {
   .u-section-5 .u-sheet-1 {
     min-height: 773px;
   }
+  
 
   .u-section-5 .u-container-layout-1 {
     padding-left: 30px;
@@ -1194,6 +1142,10 @@ body {
 
   .u-section-5 .u-image-1 {
     min-height: 687px;
+  }
+
+  .menu-container {
+    margin: 10px;
   }
 }
 
@@ -1444,6 +1396,7 @@ body {
   .u-section-6 .u-sheet-1 {
     min-height: 1276px;
   }
+  
 
   .u-section-6 .u-layout-wrap-1 {
     margin-bottom: -22px;
@@ -1496,6 +1449,10 @@ body {
   .u-section-6 .u-container-layout-4 {
     padding-left: 10px;
     padding-right: 10px;
+  }
+
+  .menu-container {
+    margin: 10px;
   }
 }
 
@@ -1650,6 +1607,7 @@ body {
   .u-section-7 .u-sheet-1 {
     min-height: 888px;
   }
+  
 
   .u-section-7 .u-image-1 {
     min-height: 629px;
@@ -1663,6 +1621,10 @@ body {
   .u-section-7 .u-container-layout-2 {
     padding-left: 10px;
     padding-right: 10px;
+  }
+
+  .menu-container {
+    margin: 10px;
   }
 }
 
@@ -1843,6 +1805,56 @@ body {
     display: block;
   }
 
+  .menu-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 0px;
+    flex-wrap: wrap;
+  }
+
+  /* Centraliza a logo default-logo.png na tela */
+  .logo {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .logo img {
+    display: block;
+    margin: 0 auto;
+    height: 60px;
+    content: url('images/default-logo.png');
+  }
+
+  /* Remove o botão de Login da lista de menus */
+  .nav-links li:last-child {
+    display: none !important;
+  }
+
+  /* Exibe o botão de Login fora do menu */
+  .login-btn-mobile {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .login-btn-mobile a {
+    background: #6e0101;
+    color: #fff !important;
+    font-family: Arial, sans-serif;
+    padding: 8px 18px;
+    border-radius: 12px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
+
+
   .nav-links {
     flex-direction: column;
     width: 100%;
@@ -1871,4 +1883,98 @@ body {
     display: none;
   }
 
+}
+
+@media (max-width: 575px) {
+  /* Navbar: exibe menu hamburguer, logo e botão login nessa ordem */
+  .menu-wrapper {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  nav.menu-container {
+    padding-left: 10px;
+  }
+
+  .u-header {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 9999;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 60px;
+    min-height: 60px;
+    padding: 0;
+  }
+
+    .menu-container {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .menu-icon {
+    display: block;
+    order: 1;
+    margin-right: 10px;
+  }
+
+  .logo {
+    display: flex !important;
+    order: 2;
+    align-items: center;
+    margin-right: 10px;
+  }
+
+  .logo img {
+    height: 40px !important;
+    /* Logo menor */
+  }
+
+  .logo span {
+    display: none;
+    /* Esconde o texto do logo para ocupar menos espaço */
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    background: #fff;
+    z-index: 1000;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links li:not(:last-child) {
+    display: none;
+    /* Esconde todos os itens exceto o último (login) */
+  }
+
+  .nav-links li:last-child {
+    display: block;
+    order: 3;
+    width: 100%;
+    text-align: left;
+  }
+
+  /* Garante que o botão de login fique visível */
+  .nav-links li:last-child a {
+    background: #6e0101;
+    color: #fff !important;
+    font-family: Arial, sans-serif;
+    padding: 8px 18px;
+    border-radius: 12px;
+    display: inline-block;
+    margin-left: 10px;
+  }
 }
