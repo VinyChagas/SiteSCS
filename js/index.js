@@ -51,17 +51,37 @@ function isInViewport(element) {
 
 document.addEventListener('DOMContentLoaded', function () {
     const counters = document.querySelectorAll('.counter');
-    let animated = false;
-    function checkAndAnimate() {
-        if (!animated) {
-            counters.forEach(counter => {
-                if (isInViewport(counter)) {
-                    animateCounter(counter, 2000); // todos com a mesma duração
+
+    // Preferência: IntersectionObserver (desempenho e precisão)
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    if (!el.dataset.animated) {
+                        el.dataset.animated = 'true';
+                        animateCounter(el, 2000);
+                    }
+                    obs.unobserve(el);
                 }
             });
-            animated = true;
-        }
+        }, { threshold: 0.35 });
+
+        counters.forEach(el => observer.observe(el));
+        return;
     }
-    window.addEventListener('scroll', checkAndAnimate);
+
+    // Fallback: scroll + verificação por elemento
+    function checkAndAnimate() {
+        counters.forEach(counter => {
+            if (!counter.dataset.animated && isInViewport(counter)) {
+                counter.dataset.animated = 'true';
+                animateCounter(counter, 2000);
+            }
+        });
+    }
+
+    window.addEventListener('scroll', checkAndAnimate, { passive: true });
+    window.addEventListener('resize', checkAndAnimate);
     checkAndAnimate();
 });
