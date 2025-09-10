@@ -19,6 +19,42 @@
     };
     onScrollHeader();
     window.addEventListener('scroll', onScrollHeader, { passive: true });
+
+    // Força carregamento e reprodução do vídeo principal (intro.mp4)
+    const heroVideo = document.querySelector('section.u-section-1 > video');
+    if (heroVideo) {
+      const ensurePlay = () => {
+        try {
+          heroVideo.setAttribute('muted', '');
+          heroVideo.muted = true;
+          heroVideo.setAttribute('playsinline', '');
+          heroVideo.setAttribute('webkit-playsinline', '');
+          heroVideo.preload = 'auto';
+          heroVideo.load();
+          const p = heroVideo.play();
+          if (p && typeof p.then === 'function') {
+            p.catch(() => { /* tenta novamente em eventos abaixo */ });
+          }
+        } catch (_) { /* ignorar */ }
+      };
+
+      heroVideo.addEventListener('canplay', ensurePlay, { once: true });
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) ensurePlay();
+      });
+
+      // Desbloqueio por gesto do usuário, se necessário
+      const unlock = () => {
+        ensurePlay();
+        document.removeEventListener('click', unlock);
+        document.removeEventListener('touchstart', unlock);
+      };
+      document.addEventListener('click', unlock, { passive: true });
+      document.addEventListener('touchstart', unlock, { passive: true });
+
+      // Primeira tentativa imediata
+      ensurePlay();
+    }
   });
 function animateCounter(el, duration = 2000) {
     const target = +el.getAttribute('data-target');
