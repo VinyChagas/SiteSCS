@@ -45,26 +45,21 @@
 </div>
   <header class="u-clearfix u-header u-header" id="sec-612e">
     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-      <nav class="menu-container">
-        <a href="" class="logo">
-          <img src="images/default-logo2.png" alt="Logo">
-          <span>SCS Contabilidade</span>
-        </a>
-        <div class="menu-wrapper">
-          <input type="checkbox" id="menu-toggle" class="menu-toggle">
-          <label for="menu-toggle" class="menu-icon">&#9776;</label>
-          <ul class="nav-links">
-            <li><a href="#carousel_0c4b">Inicio</a></li>
-            <li><a href="#carousel_1296">Sobre</a></li>
-            <li><a href="#carousel_e68f">Valores</a></li>
-            <li><a href="#carousel_5ae2">Contato</a></li>
-            <li><a href="#download-section">Download</a></li>
-            <li>
-              <a href="https://vip.acessorias.com/scsassessoriaempresarial" class="btn-login">Login</a>
-            </li>
-            <!-- <li><a href=""><i class="fas fa-sign-in-alt"></i> Login</a></li> -->
-          </ul>
-        </div>
+      <nav class="navbar" aria-label="Navegação principal">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-burger" aria-label="Abrir menu" aria-controls="nav" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <ul id="nav" class="navbar-links">
+          <li><a href="#carousel_0c4b">Início</a></li>
+          <li><a href="#carousel_1296">Sobre</a></li>
+          <li><a href="#carousel_e68f">Valores</a></li>
+          <li><a href="#carousel_5ae2">Contato</a></li>
+          <li><a href="#download-section">Download</a></li>
+          <li><a href="https://vip.acessorias.com/scsassessoriaempresarial" class="btn-login" target="_blank" rel="noopener">Login</a></li>
+        </ul>
       </nav>
     </div>
   </header>
@@ -89,29 +84,31 @@
     <div class="u-clearfix u-sheet u-valign-bottom u-sheet-1">
       <h1 class="u-text u-text-2 services-title">Nossos Serviços</h1>
       <p class="u-text u-text-3 services-subtitle"><b>Oferecemos soluções completas para que você possa focar no que realmente importa: o crescimento do seu negócio!</b></p>
-      <div class="services-carousel-container" tabindex="0">
-        <button class="carousel-arrow left" aria-label="Anterior" type="button">&#8592;</button>
-        <div class="services-cards-carousel">
-          <div class="service-card">
-            <h4><b>Contábil</b></h4>
-            <p>Organização contábil completa, desde a escrituração até a elaboração de demonstrações financeiras, para que você tenha uma visão clara e precisa da saúde da sua empresa.</p>
-          </div>
-          <div class="service-card">
-            <h4><b>Fiscal</b></h4>
-            <p>Cálculo e emissão de guias de impostos, escrituração fiscal, atendimento a obrigações acessórias e assessoria completa para garantir que sua empresa esteja sempre em dia com o Fisco.</p>
-          </div>
-          <div class="service-card">
-            <h4><b>Recursos Humanos</b></h4>
-            <p>Processamento da folha de pagamento, admissão e demissão de funcionários, gestão de benefícios e todas as rotinas de departamento pessoal para que você tenha uma equipe satisfeita e produtiva.</p>
-          </div>
-          <div class="service-card">
-            <h4><b>Certificado Digital</b></h4>
-            <p>Emissão de certificados digitais com agilidade e segurança, para que você possa realizar suas transações online com tranquilidade.</p>
-          </div>
+      <div class="services-carousel-container">
+        <div class="carousel-fade left" aria-hidden="true"></div>
+        <button class="carousel-arrow left" aria-label="Anterior" type="button"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+        <div class="services-cards-carousel" role="region" aria-roledescription="carousel" aria-label="Serviços" tabindex="0">
+          <article class="service-card">
+            <h3 class="service-title">Contábil</h3>
+            <p class="service-desc">Organização contábil completa, desde a escrituração até a elaboração de demonstrações financeiras, para que você tenha uma visão clara e precisa da saúde da sua empresa.</p>
+          </article>
+          <article class="service-card">
+            <h3 class="service-title">Fiscal</h3>
+            <p class="service-desc">Cálculo e emissão de guias de impostos, escrituração fiscal, atendimento a obrigações acessórias e assessoria completa para garantir que sua empresa esteja sempre em dia com o Fisco.</p>
+          </article>
+          <article class="service-card">
+            <h3 class="service-title">Recursos Humanos</h3>
+            <p class="service-desc">Processamento da folha de pagamento, admissão e demissão de funcionários, gestão de benefícios e todas as rotinas de departamento pessoal para que você tenha uma equipe satisfeita e produtiva.</p>
+          </article>
+          <article class="service-card">
+            <h3 class="service-title">Certificado Digital</h3>
+            <p class="service-desc">Emissão de certificados digitais com agilidade e segurança, para que você possa realizar suas transações online com tranquilidade.</p>
+          </article>
         </div>
-        <button class="carousel-arrow right" aria-label="Próximo" type="button">&#8594;</button>
+        <button class="carousel-arrow right" aria-label="Próximo" type="button"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+        <div class="carousel-fade right" aria-hidden="true"></div>
       </div>
-      <div class="carousel-dots"></div>
+      <div class="carousel-dots" aria-live="polite"></div>
     </div>
   </section>
  
@@ -153,83 +150,30 @@
 
     </div>
   </section>
-  <section class="u-align-center u-clearfix u-container-align-center u-section-5">
-    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1"><br>
-      <h1 class="u-custom-font u-font-oswald u-text-2" style="color: #6E0000">Nossos Valores</h1>
-      <div class="u-clearfix u-expanded-width u-gutter-18 u-layout-wrap u-layout-wrap-1">
-        <div class="u-gutter-0 u-layout">
-          <div class="u-layout-row">
-            <div class="u-size-30 u-size-60-md">
-              <div class="u-layout-col">
-                <div class="u-size-20">
-                  <div class="u-layout-row">
-                    <div
-                      class="u-align-left u-container-align-left u-container-style u-layout-cell u-size-17 u-layout-cell-1 mobile_none">
-                      <div class="u-container-layout u-valign-middle u-container-layout-1">
-                        <h2 class="u-align-center-lg u-align-center-md u-align-center-xl u-text u-text-1 mobile_none">1</h2>
-                      </div>
-                    </div>
-                    <div class="u-container-style u-layout-cell u-palette-4-base u-size-43 u-layout-cell-2">
-                      <div class="u-container-layout u-container-layout-2">
-                        <h6 class="u-custom-font u-font-montserrat u-text " style="color: #FFCC00"><b>Compromisso com a
-                            Excelência!</b></h6>
-                        <p class="u-text u-text-3">“Buscamos sempre a excelência, entregando soluções contábeis
-                          personalizadas que agregam valor e impulsionam o sucesso dos nossos clientes.”</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="u-size-20">
-                  <div class="u-layout-row">
-                    <div
-                      class="u-align-left u-container-align-left u-container-style u-layout-cell u-size-17 u-layout-cell-3 mobile_none">
-                      <div class="u-container-layout u-valign-middle u-container-layout-3">
-                        <h2 class="u-align-center-lg u-align-center-md u-align-center-xl u-text u-text-4">2</h2>
-                      </div>
-                    </div>
-                    <div class="u-container-style u-layout-cell u-palette-4-base u-size-43 u-layout-cell-4">
-                      <div class="u-container-layout u-container-layout-4">
-                        <h6 class="u-custom-font u-font-montserrat u-text u-text-5" style="color: #FFCC00">
-                          <b>Transparência em Cada Passo</b>
-                        </h6>
-                        <p class="u-text u-text-6">“Prezamos pela transparência em todas as nossas ações, garantindo uma
-                          relação de confiança e segurança em cada etapa do trabalho.”</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="u-size-20">
-                  <div class="u-layout-row">
-                    <div
-                      class="u-align-left u-container-align-left u-container-style u-layout-cell u-size-17 u-layout-cell-5 mobile_none">
-                      <div class="u-container-layout u-valign-middle u-container-layout-5">
-                        <h2 class="u-align-center-lg u-align-center-md u-align-center-xl u-text u-text-7 ">3</h2>
-                      </div>
-                    </div>
-                    <div class="u-container-style u-layout-cell u-palette-4-base u-size-43 u-layout-cell-6">
-                      <div class="u-container-layout u-container-layout-6">
-                        <h6 class="u-custom-font u-font-montserrat u-text u-text-8" style="color: #FFCC00"><b>Parceria
-                            para Crescer Juntos</b></h6>
-                        <p class="u-text u-text-9">“Nosso objetivo é caminhar lado a lado com você, oferecendo suporte
-                          estratégico para alcançar grandes conquistas.”</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="u-size-30 u-size-60-md">
-              <div class="u-layout-col">
-                <div
-                  class="u-align-left u-container-align-left u-container-style u-image u-layout-cell u-size-60 u-image-1"
-                  style="min-height: 725px; background-image: url('images/sddd-min.jpg'); background-position: 50% 50%; background-size: cover;"
-                  data-image-width="1200" data-image-height="800">
-                  <div class="u-container-layout u-container-layout-7"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+  <section class="values-section" id="carousel_e68f">
+    <div class="values-shell">
+      <h2 class="values-title">Nossos Valores</h2>
+      <div class="values-content">
+        <div class="values-grid">
+          <article class="value-card">
+            <span class="value-badge">1</span>
+            <h3>Compromisso com a Excelência</h3>
+            <p>“Buscamos sempre a excelência, entregando soluções contábeis personalizadas que agregam valor e impulsionam o sucesso dos nossos clientes.”</p>
+          </article>
+          <article class="value-card">
+            <span class="value-badge">2</span>
+            <h3>Transparência em Cada Passo</h3>
+            <p>“Prezamos pela transparência em todas as nossas ações, garantindo uma relação de confiança e segurança em cada etapa do trabalho.”</p>
+          </article>
+          <article class="value-card">
+            <span class="value-badge">3</span>
+            <h3>Parceria para Crescer Juntos</h3>
+            <p>“Nosso objetivo é caminhar lado a lado com você, oferecendo suporte estratégico para alcançar grandes conquistas.”</p>
+          </article>
         </div>
+      </div>
+      <div class="values-media">
+        <img src="images/sddd-min.jpg" alt="Equipe SCS em ação" class="values-image">
       </div>
     </div>
   </section>

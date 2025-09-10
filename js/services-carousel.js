@@ -1,110 +1,120 @@
 (function () {
-  const carousel = document.querySelector('.services-cards-carousel');
-  const cards = Array.from(carousel.children);
+  const container = document.querySelector('.services-cards-carousel');
+  if (!container) return;
+  const cards = Array.from(container.querySelectorAll('.service-card'));
   const prevBtn = document.querySelector('.carousel-arrow.left');
   const nextBtn = document.querySelector('.carousel-arrow.right');
   const dotsContainer = document.querySelector('.carousel-dots');
-  let current = 0;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  let currentIndex = 0;
+  let rafPending = false;
   let intervalId = null;
 
-  function getCardsPerView() {
-    return window.innerWidth >= 900 ? 1 : 1;
+  function clamp(index) {
+    if (index < 0) return 0;
+    if (index >= cards.length) return cards.length - 1;
+    return index;
   }
 
-  function getCardCount() {
-    const cardsPerView = getCardsPerView();
-    return cards.length - cardsPerView;
+  function goTo(index, userInitiated = false) {
+    currentIndex = clamp(index);
+    const behavior = prefersReducedMotion.matches ? 'auto' : 'smooth';
+    cards[currentIndex].scrollIntoView({ behavior, inline: 'center', block: 'nearest' });
+    updateDots();
+    if (userInitiated) resetInterval();
   }
 
-  function getCardWidth() {
-    const card = cards[0];
-    const style = getComputedStyle(card);
-    return card.offsetWidth + parseInt(style.marginLeft) + parseInt(style.marginRight);
+  function updateCurrentByCenter() {
+    const containerRect = container.getBoundingClientRect();
+    const containerCenter = containerRect.left + containerRect.width / 2;
+    let bestIndex = 0;
+    let bestDist = Infinity;
+    for (let i = 0; i < cards.length; i++) {
+      const rect = cards[i].getBoundingClientRect();
+      const cardCenter = rect.left + rect.width / 2;
+      const dist = Math.abs(cardCenter - containerCenter);
+      if (dist < bestDist) {
+        bestDist = dist;
+        bestIndex = i;
+      }
+    }
+    if (bestIndex !== currentIndex) {
+      currentIndex = bestIndex;
+      updateDots();
+    }
   }
 
-  function updateCarousel() {
-    const cardWidth = getCardWidth();
-    const cardCount = getCardCount();
-
-    // Corrige índice fora do alcance
-    if (current >= cardCount) current = cardCount - 1;
-
-    carousel.style.transform = `translateX(-${current * cardWidth}px)`;
-
-    // Atualiza os dots
+  function buildDots() {
+    if (!dotsContainer) return;
     dotsContainer.innerHTML = '';
-    for (let i = 0; i < cardCount; i++) {
+    for (let i = 0; i < cards.length; i++) {
       const dot = document.createElement('button');
-      dot.className = 'carousel-dot' + (i === current ? ' active' : '');
+      dot.className = 'carousel-dot' + (i === currentIndex ? ' active' : '');
       dot.type = 'button';
       dot.setAttribute('aria-label', `Ir para o serviço ${i + 1}`);
-      dot.addEventListener('click', () => {
-        current = i;
-        updateCarousel();
-        resetInterval();
-      });
+      dot.setAttribute('aria-selected', i === currentIndex ? 'true' : 'false');
+      dot.addEventListener('click', () => goTo(i, true));
       dotsContainer.appendChild(dot);
     }
   }
 
-  function nextCard() {
-    const cardCount = getCardCount();
-    current = (current + 1) % cardCount;
-    updateCarousel();
+  function updateDots() {
+    if (!dotsContainer) return;
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
+    dots.forEach((d, i) => {
+      d.classList.toggle('active', i === currentIndex);
+      d.setAttribute('aria-selected', i === currentIndex ? 'true' : 'false');
+    });
   }
 
-  function prevCard() {
-    const cardCount = getCardCount();
-    current = (current - 1 + cardCount) % cardCount;
-    updateCarousel();
-  }
+  function next() { goTo(currentIndex + 1, true); }
+  function prev() { goTo(currentIndex - 1, true); }
 
   function resetInterval() {
     clearInterval(intervalId);
-    intervalId = setInterval(nextCard, 6000);
+    intervalId = setInterval(() => {
+      if (document.hidden) return; // evita rolagem em abas ocultas
+      const nextIndex = currentIndex + 1 >= cards.length ? 0 : currentIndex + 1;
+      goTo(nextIndex, false);
+    }, 6000);
   }
 
-  nextBtn.addEventListener('click', () => {
-    nextCard();
-    resetInterval();
+  // Eventos
+  if (nextBtn) nextBtn.addEventListener('click', next);
+  if (prevBtn) prevBtn.addEventListener('click', prev);
+
+  // Teclado no container
+  container.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
   });
 
-  prevBtn.addEventListener('click', () => {
-    prevCard();
-    resetInterval();
+  // Sincroniza índice ao rolar (com RAF para performance)
+  container.addEventListener('scroll', () => {
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(() => {
+      updateCurrentByCenter();
+      rafPending = false;
+    });
+  }, { passive: true });
+
+  // Pausa/retoma auto-play em interação do usuário
+  ['pointerdown', 'wheel', 'touchstart', 'keydown'].forEach(evt => {
+    container.addEventListener(evt, () => resetInterval(), { passive: true });
   });
 
-  // Swipe touch
-  let startX = null;
-  carousel.parentElement.addEventListener('touchstart', function (e) {
-    if (e.touches.length === 1) startX = e.touches[0].clientX;
-  });
-  carousel.parentElement.addEventListener('touchend', function (e) {
-    if (startX !== null && e.changedTouches.length === 1) {
-      const dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 40) {
-        dx < 0 ? nextCard() : prevCard();
-        resetInterval();
-      }
-    }
-    startX = null;
-  });
-
-  // Teclado
-  carousel.parentElement.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowLeft') { prevCard(); resetInterval(); }
-    if (e.key === 'ArrowRight') { nextCard(); resetInterval(); }
-  });
-
-  // Resize
   window.addEventListener('resize', () => {
-    updateCarousel();
+    // Após resize, re-centra o card atual
+    goTo(currentIndex);
   });
 
-  // Inicializa corretamente
+  // Init
   window.addEventListener('load', () => {
-    current = 0;
-    updateCarousel();
-    intervalId = setInterval(nextCard, 6000);
+    currentIndex = 0;
+    buildDots();
+    goTo(0);
+    resetInterval();
   });
 })();
