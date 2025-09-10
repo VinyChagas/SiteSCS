@@ -72,12 +72,10 @@
   function prev() { goTo(currentIndex - 1, true); }
 
   function resetInterval() {
-    clearInterval(intervalId);
-    intervalId = setInterval(() => {
-      if (document.hidden) return; // evita rolagem em abas ocultas
-      const nextIndex = currentIndex + 1 >= cards.length ? 0 : currentIndex + 1;
-      goTo(nextIndex, false);
-    }, 6000);
+    if (intervalId) {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
   }
 
   // Eventos
@@ -114,7 +112,6 @@
   window.addEventListener('load', () => {
     currentIndex = 0;
     buildDots();
-    goTo(0);
     resetInterval();
   });
 })();
