@@ -53,7 +53,7 @@ Como a SCS trabalha · Quanto custa · Troca de contador (preview) · Indicadore
 | Recurso | Status |
 |---------|--------|
 | Login VIP Acessórias | Preservado |
-| WhatsApp comercial (`5541995050269`) | **Aprovado** |
+| WhatsApp comercial (`5541997512925`) | **Aprovado** |
 | Endereço e localização (Fanny / mapa) | **Aprovado** |
 | Telefone (41) 3015-9480 | **Aprovado** |
 | Horário Seg–Qui 07–18 / Sex 08–17 | **Aprovado** |

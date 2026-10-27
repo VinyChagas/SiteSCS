@@ -6,8 +6,9 @@
   function waUrl(text) {
     var n = (cfg.whatsapp && cfg.whatsapp.number) || "5541997512925";
     var t = text || (cfg.whatsapp && cfg.whatsapp.defaultText) || "";
-    var url = "https://wa.me/" + n;
-    if (t) url += "?text=" + encodeURIComponent(t);
+    var url = "https://api.whatsapp.com/send/?phone=" + n;
+    if (t) url += "&text=" + encodeURIComponent(t).replace(/%20/g, "+");
+    url += "&type=phone_number&app_absent=0";
     return url;
   }
 
