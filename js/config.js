@@ -10,7 +10,7 @@ window.SCS_CONFIG = {
   showAppSection: false,
 
   whatsapp: {
-    number: "5541995050269",
+    number: "5541997512925",
     defaultText: "Olá, gostaria de atendimento sobre serviços contábeis!",
   },
 

@@ -4,7 +4,7 @@
   var cfg = window.SCS_CONFIG || {};
 
   function waUrl(text) {
-    var n = (cfg.whatsapp && cfg.whatsapp.number) || "5541995050269";
+    var n = (cfg.whatsapp && cfg.whatsapp.number) || "5541997512925";
     var t = text || (cfg.whatsapp && cfg.whatsapp.defaultText) || "";
     var url = "https://wa.me/" + n;
     if (t) url += "?text=" + encodeURIComponent(t);
